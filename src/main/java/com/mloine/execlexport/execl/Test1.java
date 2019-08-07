@@ -17,7 +17,7 @@ public class Test1 {
     public static void main(String[] args) throws FileNotFoundException {
         ExcelUtil excelUtil = new ExcelUtil (Person.class);
 
-        FileOutputStream fileOutputStream = new FileOutputStream ("e://test10.xls");
+        FileOutputStream fileOutputStream = new FileOutputStream ("e://test1.xls");
         ArrayList<Person> people = new ArrayList<> ();
         people.add (new Person (1l,"xyk","pwd",new Date (),new BigDecimal (123)));
         people.add (new Person (2l,"xyk2","pwd",new Date (),new BigDecimal (123)));
