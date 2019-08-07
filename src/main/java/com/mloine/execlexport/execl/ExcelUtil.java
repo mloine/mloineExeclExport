@@ -1,7 +1,6 @@
-package com.mloine.execlexport.test1;
+package com.mloine.execlexport.execl;
 
 import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddressList;
 import org.slf4j.Logger;
@@ -56,6 +55,14 @@ public class ExcelUtil<T>
         }
         return big==null ? "" : big.toPlainString();
     }
+
+    /**
+     * 导入xls
+     * @param sheetName
+     * @param input
+     * @return
+     * @throws Exception
+     */
     public List<T> importExcel(String sheetName, InputStream input) throws Exception
     {
         List<T> list = new ArrayList<T>();
@@ -83,7 +90,10 @@ public class ExcelUtil<T>
                 {
                     // 设置类的私有字段属性可访问.
                     field.setAccessible(true);
-                    fieldsMap.add(field);
+                    Excel attr = field.getAnnotation(Excel.class);
+                    if(attr.isExportField()){
+                        fieldsMap.add(field);
+                    }
                 }
             }
             for (int i = 1; i < rows; i++)

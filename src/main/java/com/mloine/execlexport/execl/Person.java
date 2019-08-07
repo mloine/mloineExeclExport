@@ -1,4 +1,4 @@
-package com.mloine.execlexport.test1;
+package com.mloine.execlexport.execl;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,8 +13,10 @@ public class Person {
 
     @Excel(name = "ID")
     private Long id;
+
     @Excel(name = "用户名")
     private String username;
+
     @Excel(name = "密码",isExportField = false)
     private String password;
 
@@ -50,6 +52,9 @@ public class Person {
         this.password = password;
         this.start = start;
         this.sum = sum;
+    }
+
+    public Person() {
     }
 
     @Override
